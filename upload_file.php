@@ -9,7 +9,7 @@ session_start();
 
 // User not logged in, this page requires login
 if (!isset($_SESSION['user_id'])) {
-    header("user_portal.php?login");
+    header("Location: user_portal.php?login");
 }
 
 // Uploaded file handling

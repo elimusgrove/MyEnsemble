@@ -1,3 +1,12 @@
+<?php
+
+// Establish Database connection
+$conn = new mysqli($servername, $username, $password);
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <title>W3.CSS Template</title>

@@ -65,9 +65,6 @@ if (isset($ajax_action) && $ajax_action === 'vote') {
 
 include_once("includes/header.php");
 
-// Session setup
-session_start();
-
 // Database connection
 $conn = mysqli_connect($hostname, $username, $password);
 

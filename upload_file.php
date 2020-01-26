@@ -4,9 +4,6 @@
 include_once("includes/db_cred.php");
 include_once("includes/header.php");
 
-// Session handling
-session_start();
-
 // User not logged in, this page requires login
 if (!isset($_SESSION['user_id'])) {
     header("Location: user_portal.php?login");

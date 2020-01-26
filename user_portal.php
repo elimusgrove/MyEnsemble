@@ -1,7 +1,7 @@
 <?php
 
-// Session handling
-session_start();
+// Includes
+include_once("includes/header.php");
 
 // Logging out
 if (isset($_GET['logout'])) {
@@ -12,9 +12,6 @@ if (isset($_GET['logout'])) {
 if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
 }
-
-// Includes
-include_once("includes/header.php");
 ?>
 
 <!DOCTYPE html>

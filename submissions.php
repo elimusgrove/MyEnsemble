@@ -4,9 +4,6 @@
 include_once("includes/db_cred.php");
 include_once("includes/header.php");
 
-// Session handling
-session_start();
-
 // Database connection
 $conn = mysqli_connect($hostname, $username, $password);
 

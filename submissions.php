@@ -19,6 +19,24 @@ if (!isset($_GET['user'])) {
     header("Location: submissions.php?user=" . $_SESSION['user_id']);
 }
 
+// Get user id
+$id = mysqli_escape_string($conn, $_GET['user']);
+
+// Get username
+$username_query = mysqli_query($conn, "SELECT username FROM myensemble.user
+                                                WHERE user_id = '" . $id . "'");
+$username_result = mysqli_fetch_assoc($username_query);
+
+// Query for files posted by the given user
+$file_query = mysqli_query($conn, "SELECT f.file_id, f.title, f.rating, f.category FROM myensemble.file f
+                                            WHERE posting_user = '" . $id . "'");
+
+// Populate files array
+$files = array();
+while ($row = mysqli_fetch_assoc($file_query)) {
+    $files[] = $row;
+}
+
 // Close connection
 mysqli_close($conn);
 ?>
@@ -31,20 +49,38 @@ mysqli_close($conn);
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 </head>
 <body>
 <br><br>
 <div class="w3-container">
-    <h1> My Submissions</h1>
-</div>
+    <h1><?= $username_result['username'] ?>'s music:</h1>
 
-<div class="w3-container">
-    <ul class="w3-ul w3-border w3-hoverable">
-        <li>Test</li>
-        <li>Test2</li>
-        <li>Test3</li>
-    </ul>
+    <?php if (mysqli_num_rows($file_query) > 0) { ?>
+
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Rating</th>
+                <th>Link</th>
+            </tr>
+            <?php
+            // Display each file with a link
+            foreach ($files as $file) {
+                echo "<tr>
+                        <td>" . $file['title'] . "</td>
+                        <td>" . $file['category'] . "</td>
+                        <td>" . $file['rating'] . "</td>
+                        <td><a href=" . "view_file.php?user=" . $id . "&id=" . $file['file_id'] . ">View</a></td>
+                    </tr>";
+            }
+            ?>
+        </table>
+
+    <?php } else {
+        echo "<h3>" . $username_result['username'] . " hasn't uploaded any files yet!</h3>";
+    }
+    ?>
 </div>
 </body>
 </html>

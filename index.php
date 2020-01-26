@@ -8,11 +8,11 @@ include_once("includes/header.php");
 $conn = mysqli_connect($hostname, $username, $password);
 
 // Query for music uploads
-$music_query = mysqli_query($conn, "SELECT f.title, u.username, f.category, f.rating
+$music_query = mysqli_query($conn, "SELECT f.title, u.username, u.user_id, f.category, f.rating, f.file_id
                                             FROM myensemble.file f 
                                             INNER JOIN myensemble.user u ON u.user_id = f.posting_user
                                             ORDER BY f.rating DESC 
-                                            LIMIT 4");
+                                            LIMIT 10");
 
 // Populate music information array
 while ($music_info[] = mysqli_fetch_assoc($music_query));
@@ -79,7 +79,8 @@ mysqli_close($conn);
                 foreach ($music_info as $file) {
                     echo "<tr>
                             <td>" . $file['title'] . "</td>
-                            <td>" . $file['username'] . "</td>
+                            <td><a href=view_file.php?user=" . $file['user_id'] . "&id=" . $file['file_id'] . ">" . $file['username'] . "</a></td>
+                            
                             <td>" . $file['category'] . "</td>
                             <td>" . $file['rating'] . "</td>
                         </tr>";

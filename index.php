@@ -12,7 +12,7 @@ $music_query = mysqli_query($conn, "SELECT f.title, u.username, u.user_id, f.cat
                                             FROM myensemble.file f 
                                             INNER JOIN myensemble.user u ON u.user_id = f.posting_user
                                             ORDER BY f.rating DESC 
-                                            LIMIT 10");
+                                            LIMIT 30");
 
 // Populate music information array
 while ($music_info[] = mysqli_fetch_assoc($music_query));
@@ -30,6 +30,10 @@ mysqli_close($conn);
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
 
     <style>
         body {
@@ -78,8 +82,8 @@ mysqli_close($conn);
                 <?php
                 foreach ($music_info as $file) {
                     echo "<tr>
-                            <td>" . $file['title'] . "</td>
-                            <td><a href=view_file.php?user=" . $file['user_id'] . "&id=" . $file['file_id'] . ">" . $file['username'] . "</a></td>
+                            <td><a href=view_file.php?user=" . $file['user_id'] . "&id=" . $file['file_id'] . ">" . $file['title'] . "</a></td>
+                            <td><a href=submissions.php?user=" . $file['user_id'] . ">" . $file['username'] . "</a></td>
                             
                             <td>" . $file['category'] . "</td>
                             <td>" . $file['rating'] . "</td>

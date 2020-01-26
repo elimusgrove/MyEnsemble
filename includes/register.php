@@ -20,10 +20,14 @@ $hash = hash('sha256', $_POST['password']);
 $skill = mysqli_escape_string($conn, $_POST['skill']);
 
 // Query for matching hash and user
-$user_query = mysqli_query($conn, "INSERT INTO myensemble.user 
+$user_query = mysqli_query($conn, "INSERT INTO myensemble.user
                                             SET username = '" . $user . "',
                                             hash = '" . $hash . "',
-                                            skill = '" . $skill . "'");
+                                            skill = '" . $skill . "',
+                                            rating = '0'");
+
+// Primary key of inserted record
+$id = mysqli_insert_id($conn);
 
 // Insert failure
 if ($user_query === false) {
@@ -31,6 +35,6 @@ if ($user_query === false) {
 }
 // Insert success
 else {
-    $_SESSION['username'] = $user;
+    $_SESSION['user_id'] = $id;
     header("Location: ../index.php");
 }

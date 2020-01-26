@@ -17,6 +17,7 @@
 
 <body>
 
+
 <div class="w3-top">
     <div class="w3-bar w3-black w3-card">
         <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
@@ -35,27 +36,26 @@
     </div>
 </div>
 
-<div class="w3-content" style="max-width:2000px;margin-top:46px">
-<ul class="mdc-list mdc-list--two-line">
-  <li class="mdc-list-item" tabindex="0">
-    <span class="mdc-list-item__text">
-      <span class="mdc-list-item__primary-text">Two-line item</span>
-      <span class="mdc-list-item__secondary-text">Secondary text</span>
-    </span>
-  </li>
-  <li class="mdc-list-item">
-    <span class="mdc-list-item__text">
-      <span class="mdc-list-item__primary-text">Two-line item</span>
-      <span class="mdc-list-item__secondary-text">Secondary text</span>
-    </span>
-  </li>
-  <li class="mdc-list-item">
-    <span class="mdc-list-item__text">
-      <span class="mdc-list-item__primary-text">Two-line item</span>
-      <span class="mdc-list-item__secondary-text">Secondary text</span>
-    </span>
-  </li>
-</ul>
+<br><br>
+
+<div class="w3-container">
+    <h1> My Submissions</h1>
+
 </div>
+
+
+
+<div class="w3-container">
+  
+  <ul class="w3-ul w3-border w3-hoverable">
+    <li>Test</li>
+    <li>Test2</li>
+    <li>Test3</li>
+  </ul>
+</div>
+
+
+
+
 </body>
 </html>

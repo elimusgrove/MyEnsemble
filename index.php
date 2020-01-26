@@ -12,7 +12,7 @@ $music_query = mysqli_query($conn, "SELECT f.title, u.username, u.user_id, f.cat
                                             FROM myensemble.file f 
                                             INNER JOIN myensemble.user u ON u.user_id = f.posting_user
                                             ORDER BY f.rating DESC 
-                                            LIMIT 10");
+                                            LIMIT 30");
 
 // Populate music information array
 while ($music_info[] = mysqli_fetch_assoc($music_query));

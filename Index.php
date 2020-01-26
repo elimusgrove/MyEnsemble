@@ -1,9 +1,9 @@
-<?php
+<!-- <?php
 
-// Establish Database connection
-$conn = new mysqli($servername, $username, $password);
+// // Establish Database connection
+// $conn = new mysqli($servername, $username, $password);
 
-?>
+?> -->
 
 <!DOCTYPE html>
 <html lang="en">

@@ -54,16 +54,60 @@ mysqli_close($conn);
 
 <!DOCTYPE html>
 <html>
+<head>
+<style> 
+select {
+  width: 25%;
+  padding: 16px 20px;
+  border: none;
+  background-color: #f1f1f1;
+}
+.center {
+  margin: auto;
+  width: 60%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 400%;
+  border-bottom: 10px solid black;
+  padding: 10px;
+}
+
+.center-form {
+    margin: auto;
+    width: 60%;
+
+}
+.center-middle{
+    text-align: center;
+    
+}
+/* .custom-file-upload{
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+} */
+</style>
+</head>
 <body>
+
+<br/><br/>
+
+<div class="w3-container">
+<div class="center"> Upload </div>
+</div><br/><br/>
+
+<div class ="w3-container" >
+<div class ="center-form">
     <form method="post" enctype="multipart/form-data">
-        <br/><br/><br/>
-        <label for="title">Title:</label><br/>
+        <br/>
+        <label for="title"><h2>Title</h2></label><br/>
         <input type="text" id="title" name="title" maxlength=50, required>
 
-        <br/><br/>
+        <br/><br/><br/><br/>
 
-        <label for="category">Instrument Category:</label><br/>
-        <select id="category" name="category" required>
+        <label for="category"><h2>Instrument Category:</h2></label><br/>
+        <select id="category" name="category" required   >
             <option value="bowed_strings">Bowed Strings</option>
             <option value="keyboard">Keyboard</option>
             <option value="woodwinds">Woodwinds</option>
@@ -71,14 +115,23 @@ mysqli_close($conn);
             <option value="vocal">Vocal</option>
             <option value="percussion">Percussion</option>
             <option value="other">Other</option>
+
+            
         </select>
 
-        <br/><br/>
+        <br/><br/><br/><br/>
 
-        <input type="file" name="music_sample" accept=".mp3" required>
+        <!-- <label for="fileupload" class="custom-file-upload">
+        </label> -->
+        <input type="file" id="fileupload" name="music_sample" accept=".mp3" required>
 
-        <br/><br/>
+        <br/><br/><br/><br/><br/><br/>
+        <div class = "center-middle">
         <input type="submit">
+        </div>
     </form>
+
+    </div>
+    </div>
 </body>
 </html>

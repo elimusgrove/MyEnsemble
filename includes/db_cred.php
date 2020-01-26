@@ -1,6 +1,6 @@
 <?php
 
 // Include configuration file for database username and password
-$hostname = 'ksn.kwa.mybluehost.me';
-$username = 'hsnkwamy_ensmbl';
+$hostname = '35.225.154.79';
+$username = 'myensemble';
 $password = 's#!zD7%ESMvrLQqgPZ^6';

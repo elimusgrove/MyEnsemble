@@ -3,11 +3,13 @@
 include_once("includes/db_cred.php");
 $conn = mysqli_connect($hostname, $username, $password);
 
-//$asdf = mysqli_query($conn, "SHOW TABLES FROM MyEnsemble");
-//var_dump(mysqli_fetch_assoc($asdf));
+$asdf = mysqli_query($conn, "SHOW TABLES FROM myensemble");
+var_dump(mysqli_fetch_assoc($asdf));
+var_dump(mysqli_fetch_assoc($asdf));
+var_dump(mysqli_fetch_assoc($asdf));
 
 
-var_dum($conn);
+//var_dump($conn);
 
 mysqli_close($conn);
 

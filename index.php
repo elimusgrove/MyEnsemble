@@ -53,7 +53,7 @@
 
 
 <!-- Header -->
-<?php include_once("C:/wamp64/www/MyEnsemble/includes/header.php"); ?>
+<?php include_once("includes/header.php"); ?>
 
 <!-- Page content -->
 <div class="content" style="max-width:2000px;margin-top:46px">
@@ -90,7 +90,7 @@
   </div>
 
 <!-- Footer -->
-<?php include_once("C:/wamp64/www/MyEnsemble/includes/footer.php"); ?>
+<?php include_once("includes/footer.php"); ?>
 
 <script>
 // Automatic Slideshow - change image every 4 seconds

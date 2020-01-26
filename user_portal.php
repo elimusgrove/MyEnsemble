@@ -15,7 +15,6 @@ if (isset($_SESSION['user_id'])) {
 
 // Includes
 include_once("includes/header.php");
-
 ?>
 
 <!DOCTYPE html>
@@ -146,7 +145,7 @@ include_once("includes/header.php");
             transform: scale(0.95);
         }
 
-        input[type=text] {
+        input[type=text], input[type=password] {
             background-color: #f6f6f6;
             border: none;
             color: #0d0d0d;
@@ -167,7 +166,7 @@ include_once("includes/header.php");
             border-radius: 5px 5px 5px 5px;
         }
 
-        input[type=text]:focus {
+        input[type=text]:focus, input[type=password]:focus {
             background-color: #fff;
             border-bottom: 2px solid #5fbae9;
         }
@@ -318,8 +317,8 @@ include_once("includes/header.php");
         <p>REGISTER</p>
         <?php } ?>
         <div class="insert-text">
-            <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
-            <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
+            <input id="username" class="fadeIn second" name="username" placeholder="username" type="text">
+            <input id="password" class="fadeIn third" name="password" placeholder="password" type="password">
         </div>
         <br/>
 
@@ -328,8 +327,8 @@ include_once("includes/header.php");
             <input type="submit" class="fadeIn fourth" value="Login" formaction="includes/login.php">
         <?php } else { ?>
             <br/>
-            <label for="skill">Skill Level:&nbsp;</label>
-            <select id="skill" name="skill">
+            <label for="skill" class="fadeIn fourth">Skill Level:&nbsp;</label>
+            <select id="skill" name="skill" class="fadeIn fourth">
                 <option value="chopsticks">Chopsticks</option>
                 <option value="amateur">Amateur</option>
                 <option value="proficient">Proficient</option>

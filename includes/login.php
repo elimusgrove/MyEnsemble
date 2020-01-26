@@ -19,20 +19,21 @@ $user = mysqli_escape_string($conn, $_POST['username']);
 $hash = hash('sha256', $_POST['password']);
 
 // Query for matching hash and user
-$user_query = mysqli_query($conn, "SELECT u.username 
-                                            FROM myensemble.user u 
-                                            WHERE u.username = '" . $user . "' 
-                                                AND u.password = '" . $hash . "'");
+$user_query = mysqli_query($conn, "SELECT username 
+                                            FROM myensemble.user
+                                            WHERE username = '" . $user . "' 
+                                                AND hash = '" . $hash . "'");
 
 // Close connection
 mysqli_close($conn);
 
 // Invalid user
 if (mysqli_num_rows($user_query) <= 0) {
-    header("Location: ../user_portal.php?error");
+    header("Location: ../user_portal.php?login&error");
 }
 // Valid user
 else {
-    $_SESSION['username'] = get_value('username', mysqli_fetch_assoc($user_query));
+    $row = mysqli_fetch_assoc($user_query);
+    $_SESSION['username'] = $row['username'];
     header("Location: ../index.php");
 }

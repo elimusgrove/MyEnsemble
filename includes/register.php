@@ -20,10 +20,11 @@ $hash = hash('sha256', $_POST['password']);
 $skill = mysqli_escape_string($conn, $_POST['skill']);
 
 // Query for matching hash and user
-$user_query = mysqli_query($conn, "INSERT INTO myensemble.user 
+$user_query = mysqli_query($conn, "INSERT INTO myensemble.user
                                             SET username = '" . $user . "',
                                             hash = '" . $hash . "',
-                                            skill = '" . $skill . "'");
+                                            skill = '" . $skill . "',
+                                            rating = '0'");
 
 // Insert failure
 if ($user_query === false) {

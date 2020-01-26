@@ -29,7 +29,7 @@ session_start();
         <div class="w3-dropdown-hover w3-hide-small">
             <button class="w3-padding-large w3-button" title="More">USER <i class="fa fa-caret-down"></i></button>
             <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="mysubmissions.php" class="w3-bar-item w3-button">My Submissions</a>
+                <a href="submissions.php?user=<?= $_SESSION['user_id'] ?>" class="w3-bar-item w3-button">My Submissions</a>
                 <a href="upload_file.php" class="w3-bar-item w3-button">Upload New Music</a>
             </div>
         </div>

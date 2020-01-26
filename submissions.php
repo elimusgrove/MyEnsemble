@@ -14,6 +14,11 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: user_portal.php?login");
 }
 
+// Default to show the logged-in user's files
+if (!isset($_GET['user'])) {
+    header("Location: submissions.php?user=" . $_SESSION['user_id']);
+}
+
 // Close connection
 mysqli_close($conn);
 ?>
@@ -21,7 +26,6 @@ mysqli_close($conn);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>W3.CSS Template</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -31,22 +35,16 @@ mysqli_close($conn);
 </head>
 <body>
 <br><br>
-
 <div class="w3-container">
     <h1> My Submissions</h1>
-
 </div>
 
-
 <div class="w3-container">
-
     <ul class="w3-ul w3-border w3-hoverable">
         <li>Test</li>
         <li>Test2</li>
         <li>Test3</li>
     </ul>
 </div>
-
-
 </body>
 </html>

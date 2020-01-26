@@ -31,6 +31,10 @@ mysqli_close($conn);
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
+
     <style>
         body {
             color: white;
@@ -78,8 +82,8 @@ mysqli_close($conn);
                 <?php
                 foreach ($music_info as $file) {
                     echo "<tr>
-                            <td>" . $file['title'] . "</td>
-                            <td><a href=view_file.php?user=" . $file['user_id'] . "&id=" . $file['file_id'] . ">" . $file['username'] . "</a></td>
+                            <td><a href=view_file.php?user=" . $file['user_id'] . "&id=" . $file['file_id'] . ">" . $file['title'] . "</a></td>
+                            <td><a href=submissions.php?user=" . $file['user_id'] . ">" . $file['username'] . "</a></td>
                             
                             <td>" . $file['category'] . "</td>
                             <td>" . $file['rating'] . "</td>

@@ -49,15 +49,32 @@ mysqli_close($conn);
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            color: white;
+        }
+
+        .w3-wide {
+            background-color: black;
+            background-image: linear-gradient(to right, black 0%, rgb(30, 30, 30) 100%);
+        }
+
+    </style>
+
 </head>
 <body>
 <br><br>
-<div class="w3-container">
-    <h1><?= $username_result['username'] ?>'s music:</h1>
+<div class="w3-container container">
+
+    <div class="w3-center">
+        <br>
+        <h1 class="w3-wide font-weight-bold"><?= $username_result['username'] ?>'s music</h1>
+    </div>
 
     <?php if (mysqli_num_rows($file_query) > 0) { ?>
 
-        <table>
+        <table class="table">
             <tr>
                 <th>Title</th>
                 <th>Category</th>
@@ -71,14 +88,14 @@ mysqli_close($conn);
                         <td>" . $file['title'] . "</td>
                         <td>" . $file['category'] . "</td>
                         <td>" . $file['rating'] . "</td>
-                        <td><a href=" . "view_file.php?user=" . $id . "&id=" . $file['file_id'] . ">View</a></td>
+                        <td style='color:blue'><a href=" . "view_file.php?user=" . $id . "&id=" . $file['file_id'] . ">View</a></td>
                     </tr>";
             }
             ?>
         </table>
 
     <?php } else {
-        echo "<h3>" . $username_result['username'] . " hasn't uploaded any files yet!</h3>";
+        echo "<h3 class='text-center'>" . $username_result['username'] . " hasn't uploaded any files yet!</h3>";
     }
     ?>
 </div>

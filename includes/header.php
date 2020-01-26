@@ -1,3 +1,22 @@
+<?php
+
+// Session handling
+session_start();
+
+// Database connection
+$conn = mysqli_connect($hostname, $username, $password);
+$query = mysqli_query("SELECT *
+                            FROM 
+");
+
+if ($_POST["searchterm"] = $row) {
+    while($row = mysqli_fetch_row($query)) {
+        header( "Location: ../index.php/userId=" . $_POST["searchterm"] );
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +56,10 @@
                class="w3-bar-item w3-button w3-padding-large w3-hide-small">LOGOFF</a>
         <?php } ?>
 
-        <input class="w3-padding-large w3-hide-small w3-right"placeholder="search">
+        <form method="post">
+            <input name="searchterm" class="w3-padding-large w3-hide-small w3-right"placeholder="search">
+            <button type="submit"></button>
+        </form>
     </div>
 </div>
 </body>

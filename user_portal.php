@@ -12,7 +12,7 @@ if (isset($_GET['logout'])) {
 }
 
 // Already logged in
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
 }
 

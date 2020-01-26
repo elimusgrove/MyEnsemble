@@ -19,7 +19,7 @@ $user = mysqli_escape_string($conn, $_POST['username']);
 $hash = hash('sha256', $_POST['password']);
 
 // Query for matching hash and user
-$user_query = mysqli_query($conn, "SELECT username 
+$user_query = mysqli_query($conn, "SELECT user_id 
                                             FROM myensemble.user
                                             WHERE username = '" . $user . "' 
                                                 AND hash = '" . $hash . "'");
@@ -34,6 +34,6 @@ if (mysqli_num_rows($user_query) <= 0) {
 // Valid user
 else {
     $row = mysqli_fetch_assoc($user_query);
-    $_SESSION['username'] = $row['username'];
+    $_SESSION['user_id'] = $row['user_id'];
     header("Location: ../index.php");
 }

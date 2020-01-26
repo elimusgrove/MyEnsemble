@@ -26,12 +26,15 @@ $user_query = mysqli_query($conn, "INSERT INTO myensemble.user
                                             skill = '" . $skill . "',
                                             rating = '0'");
 
+// Primary key of inserted record
+$id = mysqli_insert_id($conn);
+
 // Insert failure
 if ($user_query === false) {
     header("Location: ../user_portal.php?error");
 }
 // Insert success
 else {
-    $_SESSION['username'] = $user;
+    $_SESSION['user_id'] = $id;
     header("Location: ../index.php");
 }

@@ -3,8 +3,6 @@
 // Establish Database connection
 $conn = new mysqli($servername, $username, $password);
 
-
-
 ?>
 
 <!DOCTYPE html>

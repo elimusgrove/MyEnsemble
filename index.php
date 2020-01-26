@@ -1,9 +1,11 @@
 <?php
 
-// // Establish Database connection
-// $conn = new mysqli($servername, $username, $password);
+include_once("includes/db_cred.php");
+$conn = mysqli_connect($hostname, $username, $password);
 
 
+
+mysqli_close($conn);
 
 ?>
 

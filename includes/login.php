@@ -20,7 +20,7 @@ $hash = hash('sha256', $_POST['password']);
 
 // Query for matching hash and user
 $user_query = mysqli_query($conn, "SELECT u.username 
-                                            FROM users u 
+                                            FROM myensemble.user u 
                                             WHERE u.username = '" . $user . "' 
                                                 AND u.password = '" . $hash . "'");
 

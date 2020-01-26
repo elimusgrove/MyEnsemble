@@ -17,9 +17,13 @@ if (!isset($_POST['username']) || !isset($_POST['password'])) {
 // Escape username, hash password
 $user = mysqli_escape_string($conn, $_POST['username']);
 $hash = hash('sha256', $_POST['password']);
+$skill = mysqli_escape_string($conn, $_POST['skill']);
 
 // Query for matching hash and user
-$user_query = mysqli_query($conn, "INSERT INTO ");
+$user_query = mysqli_query($conn, "INSERT INTO myensemble.user 
+                                            SET username = '" . $user . "',
+                                            hash = '" . $hash . "',
+                                            skill = '" . $skill . "'");
 
 // Insert failure
 if ($user_query === false) {

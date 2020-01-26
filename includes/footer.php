@@ -10,6 +10,7 @@
 <body>
 <div class="w3-black" id="footer">
     <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-xlarge">
+        <p class="w3-medium">Team: Alpha Boss Monster Legends of Swag (Dab)</p>
         <p class="w3-medium">Submission for MinneHacks 2020</p>
     </footer>
 </div>

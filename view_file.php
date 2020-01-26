@@ -1,5 +1,40 @@
 <?php
 
+// Database connection
+$conn = mysqli_connect($hostname, $username, $password);
+
+// AJAX handling
+$ajax_action = $_POST['ajax_action'];
+if (isset($ajax_action) && $ajax_action == 'vote') {
+
+    // Vars
+    $upvoting = mysqli_escape_string($conn, $_POST['upvote']);
+    $file_id = mysqli_escape_string($conn, $_POST['file_id']);
+    $user_id = mysqli_escape_string($conn, $_POST['user_id']);
+
+    // Determine if already voted on
+    $voted_query = mysqli_query($conn, "SELECT upvote
+                                                FROM myensemble.rated_file
+                                                WHERE file_id = '" . $file_id . "'
+                                                AND user_id = '" . $user_id . "'");
+    $voted_results = mysqli_fetch_assoc($voted_query);
+    $voted = mysqli_num_rows($voted_query) > 0 ? true : false;
+    $upvoted = $voted_results['upvote'];
+
+    // Haven't voted
+    if (!$voted) {
+        mysqli_query($conn, "INSERT INTO myensemble.rated_file
+                                        SET file_id = '" . $file_id . "',
+                                        rating_user = '" . $user_id . "',
+                                        upvote = '" . $upvoting . "'");
+    }
+
+
+
+    echo json_encode($voted);
+    exit;
+}
+
 // Includes
 include_once("includes/db_cred.php");
 include_once("includes/header.php");
@@ -109,6 +144,8 @@ mysqli_close($conn);
     <h2>User: <a href="submissions.php?user=<?= $user ?>"><?= $file['username'] ?></a></h2>
     <h3>Uploaded: <?= $file['date'] ?></h3>
     <h3>Rating: <?= $file['rating'] ?></h3>
+    <button type="button" onclick="vote(true)">Upvote</button>
+    <button type="button" onclick="vote(false)">Downvote</button>
     <div class="w3-center">
         <?php
         // Display audio player
@@ -143,4 +180,27 @@ mysqli_close($conn);
     </div>
 </div>
 </body>
+
+<script type="text/javascript">
+    function vote(upvote) {
+        $.ajax({
+            url : "<?= $_SERVER['PHP_SELF'] ?>",
+            type : 'POST',
+            data : {
+                'ajax_action' : 'vote',
+                'upvote' : upvote,
+                'user_id' : <?= $_SESSION['user_id'] ?>,
+                'file_id' : <?= $id ?>
+            },
+            dataType:'json',
+            success : function(data) {
+                alert('Data: '+data);
+            },
+            error : function(request,error)
+            {
+                alert("Request: "+JSON.stringify(request));
+            }
+        });
+    }
+</script>
 </html>

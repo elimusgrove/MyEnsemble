@@ -14,15 +14,12 @@ if (!isset($_SESSION['user_id'])) {
 
 // Uploaded file handling
 if (isset($_GET['action']) && $_GET['action'] === "upload") {
-    echo "HERE";
+    echo "<br/><br/><br/><br/><br/><br/><br/><br/>";
 }
 ?>
 
 <!DOCTYPE html>
 <html>
-<head>
-
-</head>
 <body>
     <form method="post" action="<?= $_SERVER['PHP_SELF']?>?action=upload">
         <br/><br/><br/>
@@ -31,7 +28,7 @@ if (isset($_GET['action']) && $_GET['action'] === "upload") {
 
         <br/><br/>
 
-        <label for="category">Instrument Category:</label>
+        <label for="category">Instrument Category:</label><br/>
         <select id="category" name="category">
             <option value="bowed_strings">Bowed Strings</option>
             <option value="keyboard">Keyboard</option>
@@ -42,6 +39,8 @@ if (isset($_GET['action']) && $_GET['action'] === "upload") {
             <option value="other">Other</option>
         </select>
 
+        <br/><br/>
+        <input type="submit">
     </form>
 </body>
 </html>
